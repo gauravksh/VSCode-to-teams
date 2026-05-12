@@ -19,7 +19,10 @@ const ACCOUNT_HOMEID_KEY = "codeSummaryToTeams.accountHomeId";
  * of your AAD multitenant app registration before publishing.
  */
 const DEFAULT_CLIENT_ID = "d856b2a0-5d3a-4aff-b921-44058e546482";
-const DEFAULT_TENANT_ID = "0ee67500-ad17-4711-9d1a-57aa97077fe9";
+// Use "organizations" so users from any work/school tenant can sign in to the
+// multitenant app registration. Use "common" to also allow personal MS accounts,
+// or a specific tenant GUID to lock sign-in to one tenant.
+const DEFAULT_TENANT_ID = "organizations";
 
 export const GRAPH_SCOPES = [
   "User.Read",
