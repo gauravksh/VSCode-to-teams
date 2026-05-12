@@ -3,7 +3,7 @@
   "displayName": "Code Summary to Teams",
   "icon": "images/logo.png",
   "description": "Send single-line code-change summaries (from git commits & Copilot chat) to a Microsoft Teams channel for a chosen time window.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "odysseylabs",
   "license": "MIT",
   "repository": {
