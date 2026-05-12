@@ -1,0 +1,90 @@
+{
+  "name": "code-summary-to-teams",
+  "displayName": "Code Summary to Teams",
+  "description": "Send single-line code-change summaries (from git commits & Copilot chat) to a Microsoft Teams channel for a chosen time window.",
+  "version": "0.1.0",
+  "publisher": "REPLACE_WITH_YOUR_MARKETPLACE_PUBLISHER",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/REPLACE_WITH_YOUR_GH_USER/code-summary-to-teams.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeSummaryToTeams.send",
+        "title": "Code Summary: Send to Teams"
+      },
+      {
+        "command": "codeSummaryToTeams.pickChannel",
+        "title": "Code Summary: Pick Teams Channel for this Workspace"
+      },
+      {
+        "command": "codeSummaryToTeams.clearChannel",
+        "title": "Code Summary: Clear Teams Channel for this Workspace"
+      },
+      {
+        "command": "codeSummaryToTeams.signIn",
+        "title": "Code Summary: Sign in to Microsoft (Teams)"
+      },
+      {
+        "command": "codeSummaryToTeams.signOut",
+        "title": "Code Summary: Sign out of Microsoft (Teams)"
+      }
+    ],
+    "configuration": {
+      "title": "Code Summary to Teams",
+      "properties": {
+        "codeSummaryToTeams.aadClientId": {
+          "type": "string",
+          "default": "",
+          "description": "(Advanced) Override the built-in Azure AD application (client) ID. Leave blank to use the extension's bundled multitenant app."
+        },
+        "codeSummaryToTeams.aadTenantId": {
+          "type": "string",
+          "default": "",
+          "description": "(Advanced) Override the AAD tenant. Leave blank to use 'organizations' (any work/school account). Set to your tenant ID to restrict sign-in."
+        },
+        "codeSummaryToTeams.includeCommits": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include git commit subjects as summary lines."
+        },
+        "codeSummaryToTeams.includeCopilotChat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include single-line summaries derived from Copilot chat history (best-effort)."
+        },
+        "codeSummaryToTeams.maxLines": {
+          "type": "number",
+          "default": 50,
+          "description": "Maximum number of summary lines to send in one message."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^2.9.1"
+  }
+}
